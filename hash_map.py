@@ -1,9 +1,3 @@
-# Implement the get/put/remove/containsKey methods of a HashMap<K, V>. Cannot use any existing data structure.
-
-# O(1) lookup
-# hash = 5 -> ["val", "jack"]
-# hash = 1 -> []
-
 
 class HashMap:
     def __init__(self, size):
