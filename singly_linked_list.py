@@ -20,8 +20,8 @@ class ListNode:
 
 class LinkedList:
     def __init__(self):
-        self.head = ListNode(-1)
-        self.tail = self.head
+        self.head = ListNode(None)
+        self.tail = self.head 
 
     def get(self, index: int) -> int:
         curr = self.head.next
@@ -44,8 +44,9 @@ class LinkedList:
             self.tail = new_node
 
     def insertTail(self, val: int) -> None:
-        self.tail.next = ListNode(val)
-        self.tail = self.tail.next
+        new_node = ListNode(val)
+        self.tail.next = new_node
+        self.tail = self.tail.next # self.tail.next = B 
 
     def remove(self, index: int) -> bool:
         i = 0
