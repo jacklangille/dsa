@@ -14,10 +14,8 @@ Output: 5
 Explanation: ((1 + 2) * 3) - 4 = 5
 """
 
-from typing import List
-
 class Solution:
-    def evalRPN(self, tokens: List[str]) -> int:
+    def evalRPN(self, tokens: list[str]) -> int:
         # ["1","2","+","3","*","4","-"]
         
         stck = []
