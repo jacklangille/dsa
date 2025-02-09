@@ -1,0 +1,110 @@
+REPRESENTATION
+--------------------------------------------------------------------
+List (Array) Representation – Ideal for complete binary trees
+        A
+       / \
+      B   C
+     / \   \
+    D   E   F
+
+tree = ['A', 'B', 'C', 'D', 'E', None, 'F']
+
+Each level is represented, left to right in the array, e.g. position 1 and 2 are level 1 which contains B and C
+
+
+Linked Node Representation – Ideal for general-purpose binary trees
+class TreeNode:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+# Manually create the tree
+root = TreeNode('A')
+root.left = TreeNode('B')
+root.right = TreeNode('C')
+root.left.left = TreeNode('D')
+root.left.right = TreeNode('E')
+root.right.right = TreeNode('F')
+
+
+TRAVERSARL DEPTH FIRST
+--------------------------------------------------------------------
+        A
+       / \
+      B   C
+     / \   \
+    D   E   F
+
+Preorder (Root → Left → Right)
+    - Visit root first
+	- Traverse left subtree
+	- Traverse right subtree
+
+def preorder(root):
+    if root:
+        print(root.value, end=" ")  # Visit root
+        preorder(root.left)         # Traverse left
+        preorder(root.right)        # Traverse right
+
+A B D E C F 
+
+Inorder (Left → Root → Right)
+    - Traverse left subtree
+    - Visit root
+    - Traverse right subtree 
+
+def inorder(root):
+    if root:
+        inorder(root.left)           # Traverse left
+        print(root.value, end=" ")   # Visit root
+        inorder(root.right)          # Traverse right
+
+D B E A C F
+
+
+Postorder (Left → Right → Root)
+	- Traverse left subtree.
+	- Traverse right subtree.
+	- Visit root.
+
+
+
+def postorder(root):
+    if root:
+        postorder(root.left)         # Traverse left
+        postorder(root.right)        # Traverse right
+        print(root.value, end=" ")   # Visit root
+
+D E B F C A 
+
+TRAVERSARL BREADTH FIRST
+--------------------------------------------------------------------
+Levelorder (Vist all nodes at each level before moving to the next)
+        A
+       / \
+      B   C
+     / \   \
+    D   E   F
+
+
+A B C D E F
+
+from collections import deque
+
+
+def level_order(node):
+    q = deque()
+    q.append(node)
+
+    while q:
+        node = q.popleft()
+        print(node)
+        if node.left:
+            q.append(node.left)
+        if node.right:
+            q.append(node.right)
+
+
+NOTE DEQUE:
+A deque (double-ended queue) is a data structure that allows insertion and deletion from both the front and the back in constant time (O(1))
